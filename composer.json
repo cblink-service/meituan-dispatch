@@ -17,7 +17,7 @@
     },
     "autoload": {
         "psr-4": {
-            "CblinkService\\MeituanDispatchService\\": "src"
+            "Cblink\\Service\\MeituanDispatchService\\": "src"
         }
     },
     "minimum-stability": "dev",
