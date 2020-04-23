@@ -1,0 +1,25 @@
+{
+    "name": "cblink-service/meituan-dispatch-service",
+    "description": "Package description here.",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "jinjun",
+            "email": "757258777@qq.com"
+        }
+    ],
+    "require": {
+        "cblink-service/kernel": "dev-master",
+        "cblink-service/wechat-open-platform": "dev-master",
+        "phpunit/phpunit": "^8.5",
+        "mockery/mockery": "^1.3",
+        "friendsofphp/php-cs-fixer": "^2.16"
+    },
+    "autoload": {
+        "psr-4": {
+            "CblinkService\\MeituanDispatchService\\": "src"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
