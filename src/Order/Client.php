@@ -8,18 +8,22 @@
  * This source file is subject to the MIT license that is bundled.
  */
 
-namespace CblinkService\MeituanDispatchService\Order;
+namespace Cblink\Service\Meituan\Dispatch\Order;
 
 use Cblink\Service\Kennel\AbstractApi;
+use Cblink\Service\Kennel\HttpResponse;
 
 class Client extends AbstractApi
 {
     /**
      * 创建门店关联订单.
      *
-     * @return \Cblink\Service\Kennel\HttpResponse
+     * @see https://peisong.meituan.com/open/doc#section2-1
+     *
+     * @param array $payload
+     * @return HttpResponse
      */
-    public function createShopOrder(array $payload = [])
+    public function createByShop(array $payload = [])
     {
         return $this->post('api/order/create-shop', $payload);
     }
@@ -27,9 +31,10 @@ class Client extends AbstractApi
     /**
      * 取消订单.
      *
-     * @return \Cblink\Service\Kennel\HttpResponse
+     * @param array $payload
+     * @return HttpResponse
      */
-    public function destroyShopOrder(array $payload = [])
+    public function cancel(array $payload = [])
     {
         return $this->post('api/order/destroy', $payload);
     }
@@ -37,7 +42,7 @@ class Client extends AbstractApi
     /**
      * 注册.
      *
-     * @return \Cblink\Service\Kennel\HttpResponse
+     * @return HttpResponse
      */
     public function registerMerchant(array $payload = [])
     {

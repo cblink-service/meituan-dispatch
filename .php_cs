@@ -1,27 +1,35 @@
 <?php
-$header = <<<EOF
-This file is part of the cblinkservice//meituan-dispatch-service.
-
-(c) jinjun <757258777@qq.com>
-
-This source file is subject to the MIT license that is bundled.
-EOF;
 
 return PhpCsFixer\Config::create()
-    ->setRiskyAllowed(true)
-    ->setRules(array(
-        '@Symfony' => true,
-        'header_comment' => array('header' => $header),
-        'array_syntax' => array('syntax' => 'short'),
-        'ordered_imports' => true,
-        'no_useless_else' => true,
-        'no_useless_return' => true,
-        'php_unit_construct' => true,
-        'php_unit_strict' => true,
-    ))
+    ->setRules([
+        '@PSR2' => true,
+        'blank_line_after_opening_tag' => true,
+        'blank_line_after_namespace' => true,
+        'blank_line_before_statement' => [
+            'statements' => [
+                'return',  'throw', 'try'
+            ],
+        ],
+        'cast_spaces' => ['space' => 'single'],
+        'ordered_imports' => ['sort_algorithm' => 'length'],
+        'braces' => ['allow_single_line_closure' => true],
+        'compact_nullable_typehint' => true,
+        'concat_space' => ['spacing' => 'one'],
+        'declare_equal_normalize' => ['space' => 'none'],
+        'function_typehint_space' => true,
+        'new_with_braces' => true,
+        'no_empty_statement' => true,
+        'no_leading_import_slash' => true,
+        'no_leading_namespace_whitespace' => true,
+        'no_whitespace_in_blank_line' => true,
+        'return_type_declaration' => ['space_before' => 'none'],
+        'single_trait_insert_per_statement' => false,
+        'standardize_not_equals' => true,
+    ])
     ->setFinder(
         PhpCsFixer\Finder::create()
             ->exclude('vendor')
-            ->in(__DIR__)
-    )
-;
+            ->in([
+                __DIR__.'/src/'
+            ])
+        );

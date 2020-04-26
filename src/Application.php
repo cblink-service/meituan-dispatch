@@ -8,11 +8,15 @@
  * This source file is subject to the MIT license that is bundled.
  */
 
-namespace CblinkService\MeituanDispatchService;
+namespace Cblink\Service\Meituan\Dispatch;
 
 use Cblink\Service\Kennel\ServiceContainer;
 
-class MeituanDispathService extends ServiceContainer
+/**
+ * Class Application
+ * @property Order\Client $order
+ */
+class Application extends ServiceContainer
 {
     /**
      * @var string
@@ -26,6 +30,7 @@ class MeituanDispathService extends ServiceContainer
     {
         return [
             Order\ServiceProvider::class,
+            Shop\ServiceProvider::class,
         ];
     }
 }
