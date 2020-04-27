@@ -14,8 +14,8 @@
     ],
     "require": {
         "cblink-service/kernel": "dev-master",
-        "phpunit/phpunit": "0.9.*|^8.5",
-        "mockery/mockery": "~7.0|^1.3"
+        "phpunit/phpunit": "7.0.*|^8.5",
+        "mockery/mockery": "0.9.*|^1.3"
     },
    "require-dev": {
        "friendsofphp/php-cs-fixer": "^2.16"
