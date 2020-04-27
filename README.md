@@ -1,4 +1,4 @@
-<h1 align="center"> /meituan-dispatch-service </h1>
+<h1 align="center"> /meituan-dispatch </h1>
 
 <p align="center"> 主要用户 Cblink 美团配送服务平台请求的SDK.</p>
 
@@ -6,7 +6,7 @@
 ## Installing
 
 ```shell
-$ composer require cblinkservice//meituan-dispatch-service -vvv
+$ composer require cblink-service/meituan-dispatch -vvv
 ```
 
 ## Usage
