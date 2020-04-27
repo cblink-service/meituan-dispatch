@@ -64,7 +64,7 @@ $ composer require cblinkservice//meituan-dispatch-service -vvv
                     'uuid' => ''
                 ];
         
-	    $result = (new MeituanDispathService($config))->order->registerMerchant($data);
+	    $result = (new MeituanDispath($config))->order->registerMerchant($data);
 TODO
 
 ## Contributing

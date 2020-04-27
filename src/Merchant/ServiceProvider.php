@@ -8,7 +8,7 @@
  * This source file is subject to the MIT license that is bundled.
  */
 
-namespace Cblink\Service\Meituan\Dispatch\Shop;
+namespace Cblink\Service\Meituan\Dispatch\Merchant;
 
 use Pimple\Container;
 use Pimple\ServiceProviderInterface;
@@ -20,7 +20,7 @@ class ServiceProvider implements ServiceProviderInterface
      */
     public function register(Container $pimple)
     {
-        $pimple['shop'] = function ($pimple) {
+        $pimple['merchant'] = function ($pimple) {
             return new Client($pimple);
         };
     }

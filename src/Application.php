@@ -30,7 +30,7 @@ class Application extends ServiceContainer
     {
         return [
             Order\ServiceProvider::class,
-            Shop\ServiceProvider::class,
+            Merchant\ServiceProvider::class,
         ];
     }
 }

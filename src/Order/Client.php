@@ -40,12 +40,35 @@ class Client extends AbstractApi
     }
 
     /**
-     * 注册.
+     * 订单配送校验
      *
+     * @param array $payload
      * @return HttpResponse
      */
-    public function registerMerchant(array $payload = [])
+    public function orderCheck(array $payload = [])
     {
-        return $this->post('api/merchant', $payload);
+        return $this->post('api/order/check', $payload);
+    }
+
+    /**
+     * 骑手位置
+     *
+     * @param array $payload
+     * @return HttpResponse
+     */
+    public function location(array $payload = [])
+    {
+        return $this->post('api/order/location', $payload);
+    }
+
+    /**
+     * 评价骑手
+     *
+     * @param array $payload
+     * @return HttpResponse
+     */
+    public function evaluate(array $payload = [])
+    {
+        return $this->post('api/order/evaluate', $payload);
     }
 }
