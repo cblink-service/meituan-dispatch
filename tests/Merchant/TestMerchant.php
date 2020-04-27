@@ -26,11 +26,6 @@ class TestMerchant extends TestBaseCase
             'name' => 'test',
             'app_key' => 'test',
             'secret' => 'test',
-            'callback_status_url' => 'http://test.net',
-            'callback_error_url' => 'http://test.net',
-            'callback_scope_url' => 'http://test.net',
-            'callback_risk_url' => 'http://test.net',
-            'callback_shop_url' => 'http://test.net',
         ];
 
         $client = \Mockery::mock(Client::class, [$this->getApp()]);
@@ -44,6 +39,35 @@ class TestMerchant extends TestBaseCase
         $res = $this->rebindAppClient('merchant', $client)
             ->merchant
             ->registerDispatch($data);
+
+        $this->assertSame(0, $res->errCode());
+    }
+
+    /**
+     * 回调保存测试
+     */
+    public function testDispatchCallback()
+    {
+        // 参数
+        $data = [
+            'callback_status_url' => 'http://test.net',
+            'callback_error_url' => 'http://test.net',
+            'callback_scope_url' => 'http://test.net',
+            'callback_risk_url' => 'http://test.net',
+            'callback_shop_url' => 'http://test.net',
+        ];
+
+        $client = \Mockery::mock(Client::class, [$this->getApp()]);
+
+        $client->allows()
+            ->dispatchCallback($data)
+            ->andReturn(
+                $this->getHttpResponse([])
+            );
+
+        $res = $this->rebindAppClient('merchant', $client)
+            ->merchant
+            ->dispatchCallback($data);
 
         $this->assertSame(0, $res->errCode());
     }

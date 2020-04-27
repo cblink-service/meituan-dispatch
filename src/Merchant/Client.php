@@ -19,4 +19,14 @@ class Client extends AbstractApi
     {
         return $this->post('api/merchant/dispatch', $payload);
     }
+
+    /**
+     * 注册美团配送服务
+     *
+     * @return \Cblink\Service\Kennel\HttpResponse
+     */
+    public function dispatchCallback(array $payload = [])
+    {
+        return $this->post('api/merchant/dispatch/callback', $payload);
+    }
 }

@@ -10,6 +10,7 @@
 
 namespace Cblink\Service\Meituan\Dispatch\Tests\Order;
 
+use Cblink\Service\Meituan\Dispatch\Application;
 use Cblink\Service\Meituan\Dispatch\Order\Client;
 use Cblink\Service\Meituan\Dispatch\Tests\TestBaseCase;
 use Cblink\Service\Meituan\Dispatch\Tests\Traits\GetPsrResponse;
@@ -24,21 +25,20 @@ class TestOrder extends TestBaseCase
     {
         // 参数
         $data = [
-            'secret' => 'test',
-            "app_key"=>"test",
-            "delivery_id" => 169736,
-            "order_id" => 169736,
-            "poi_seq" => 40101,
-            "shop_id" => "test_0001",
-            "delivery_service_code" => 4011,
-            "receiver_name" => "test",
-            "receiver_address" => "深圳",
-            "receiver_phone" => "13944702732",
-            "receiver_lng" => "116427694",
-            "receiver_lat" => "39902779",
-            "goods_value" => "100",
-            "goods_weight" => 1,
-            "goods_detail" => \json_encode([
+            'uuid' => '1',
+            'delivery_id' => 169736,
+            'order_id' => 169736,
+            'poi_seq' => 40101,
+            'shop_id' => 'test_0001',
+            'delivery_service_code'=> 4011,
+            'receiver_name' => 'test',
+            'receiver_address' => '深圳',
+            'receiver_phone' => '13944702732',
+            'receiver_lng' => '116427694',
+            'receiver_lat' => '39902779',
+            'goods_value' => '100',
+            'goods_weight' => 1,
+            'goods_detail' => \json_encode([
                 'goods' => [
                     [
                         'goodCount' => 1,
@@ -49,7 +49,6 @@ class TestOrder extends TestBaseCase
             ])
 
         ];
-
 
         // 模拟类
         $client = \Mockery::mock(Client::class, [$this->getApp()]);
@@ -77,6 +76,7 @@ class TestOrder extends TestBaseCase
             "mt_peisong_id" => 1,   // 美团 订单id
             "delivery_id" => 1,     // 美团订单活动 id 也就是第三方 id
             "order_id" => 1,        // 第三方订单 id
+            'uuid' => '1',
         ];
 
         $client = \Mockery::mock(Client::class, [$this->getApp()]);
@@ -102,13 +102,29 @@ class TestOrder extends TestBaseCase
         // 参数
         $data = [
             'shop_id' => 'test_0001',
-            'delivery_service_code' => '美团配送服务代码',
-            'receiver_address' => '收件人地址',
-            'receiver_lng' => '纬度',
-            'receiver_lat' => '经度',
-            'check_type' => '1',
-            'mock_order_time' => '模拟发单时间',
+            'delivery_service_code' => '4011',
+            'receiver_address' => '深圳',
+            'receiver_lng' => '116427694',
+            'receiver_lat' => '39902779',
+            'check_type' => 1,
+            'mock_order_time' => time(),
+            'uuid' => '3e0794d6-888f-11ea-a065-6925620cd3df'
+//            'mt_peisong_id'=>'1587969422574001912',
+//            'delivery_id'=>'169736'
         ];
+
+        $res = (new Application(
+            [
+                'private' => true,
+                'base_url' => 'http://meituan-dispatch.erp.cblink.test/',
+                'app_id' => 45799194,
+                'key' => 'kK4xEVJk4N',
+                'secret' => 'NLkhKSnLIbMSJuHQyiBKMgU3Pk5Sua',
+                'uuid' => ''
+            ]
+        ))->order->orderCheck($data);
+        var_dump($res->errCode(),$res->toArray());
+        exit;
 
         $client = \Mockery::mock(Client::class, [$this->getApp()]);
 
@@ -134,6 +150,7 @@ class TestOrder extends TestBaseCase
         $data = [
             'mt_peisong_id' => 1,   // 美团订单 id
             'delivery_id' => 1,     // 第三方订单 id
+            'uuid' => '1',
         ];
 
         $client = \Mockery::mock(Client::class, [$this->getApp()]);
@@ -161,6 +178,7 @@ class TestOrder extends TestBaseCase
             'delivery_id' => 1,     // 第三方订单 id
             'score' => '5', // 评分（5分制）
             'comment_content' => '很好',  // 评论内容（评论的字符长度需小于1024）
+            'uuid' => '1',
         ];
 
         $client = \Mockery::mock(Client::class, [$this->getApp()]);
