@@ -74,8 +74,9 @@ class TestOrder extends TestBaseCase
         $data = [
             "mt_peisong_id" => 1,   // 美团 订单id
             "delivery_id" => 1,     // 美团订单活动 id 也就是第三方 id
-            "order_id" => 1,        // 第三方订单 id
             'uuid' => '1',
+            'cancel_reason_id'=> 101,
+            'cancel_reason' => '理由'
         ];
 
         $client = \Mockery::mock(Client::class, [$this->getApp()]);
