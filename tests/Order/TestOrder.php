@@ -10,7 +10,6 @@
 
 namespace Cblink\Service\Meituan\Dispatch\Tests\Order;
 
-use Cblink\Service\Meituan\Dispatch\Application;
 use Cblink\Service\Meituan\Dispatch\Order\Client;
 use Cblink\Service\Meituan\Dispatch\Tests\TestBaseCase;
 use Cblink\Service\Meituan\Dispatch\Tests\Traits\GetPsrResponse;
@@ -26,16 +25,16 @@ class TestOrder extends TestBaseCase
         // 参数
         $data = [
             'uuid' => '1',
-            'delivery_id' => 169736,
-            'order_id' => 169736,
+            'delivery_id' => 1,
+            'order_id' => 1,
             'poi_seq' => 40101,
             'shop_id' => 'test_0001',
             'delivery_service_code'=> 4011,
             'receiver_name' => 'test',
             'receiver_address' => '深圳',
-            'receiver_phone' => '13944702732',
-            'receiver_lng' => '116427694',
-            'receiver_lat' => '39902779',
+            'receiver_phone' => '13900000000',
+            'receiver_lng' => 116427694,
+            'receiver_lat' => 39902779,
             'goods_value' => '100',
             'goods_weight' => 1,
             'goods_detail' => \json_encode([
@@ -108,23 +107,9 @@ class TestOrder extends TestBaseCase
             'receiver_lat' => '39902779',
             'check_type' => 1,
             'mock_order_time' => time(),
-            'uuid' => '3e0794d6-888f-11ea-a065-6925620cd3df'
-//            'mt_peisong_id'=>'1587969422574001912',
-//            'delivery_id'=>'169736'
+            'uuid' => '1'
         ];
 
-        $res = (new Application(
-            [
-                'private' => true,
-                'base_url' => 'http://meituan-dispatch.erp.cblink.test/',
-                'app_id' => 45799194,
-                'key' => 'kK4xEVJk4N',
-                'secret' => 'NLkhKSnLIbMSJuHQyiBKMgU3Pk5Sua',
-                'uuid' => ''
-            ]
-        ))->order->orderCheck($data);
-        var_dump($res->errCode(),$res->toArray());
-        exit;
 
         $client = \Mockery::mock(Client::class, [$this->getApp()]);
 
@@ -152,6 +137,7 @@ class TestOrder extends TestBaseCase
             'delivery_id' => 1,     // 第三方订单 id
             'uuid' => '1',
         ];
+
 
         $client = \Mockery::mock(Client::class, [$this->getApp()]);
 

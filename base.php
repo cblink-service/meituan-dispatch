@@ -6,5 +6,5 @@ return [
     'app_id' => 1,
     'key' => 'test',
     'secret' => 'test',
-    'uuid' => ''
+    'uuid' => '1'
 ];
