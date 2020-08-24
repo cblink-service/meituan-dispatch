@@ -13,7 +13,7 @@
         }
     ],
     "require": {
-        "cblink-service/kernel": "dev-master",
+        "cblink-service/kernel": "^0.2.0",
         "phpunit/phpunit": "7.0.*|^8.5",
         "mockery/mockery": "0.9.*|^1.3"
     },
